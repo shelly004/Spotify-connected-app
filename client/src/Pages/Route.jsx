@@ -1,15 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Profile } from './index';
+import { Profile,TopArtists } from './index';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Profile/>
     },
-    // {
-    //     path: '/top-artists',
-    //     element: <Topartist/>
-    // },
+    {
+        path: '/top-artists',
+        element: <TopArtists/>
+    },
     // {
     //     path: '/top-tracks',
     //     element: <Toptacks/>

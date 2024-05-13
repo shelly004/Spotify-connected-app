@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import {
-  Route,RouterProvider,Routes,
+  RouterProvider,
   useLocation,
 } from 'react-router-dom';
 import { accessToken, getCurrentUserProfile, logout } from "./spotify";
 import { GlobalStyle } from "./styles";
 import styled from "styled-components";
-import { Login, Profile } from './Pages';
+import { Login } from './Pages';
 import router from "./Pages/Route";
 
 const StyledLogoutButton = styled.button`
@@ -62,25 +62,6 @@ function App() {
             <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
             
             <RouterProvider router={router}/>
-          {/* <Routes>
-             <ScrollToTop />
-            <Route path="/top-artists">
-              <h1>Top Artists</h1>
-            </Route>
-            <Route path="/top-tracks">
-              <h1>Top Tracks</h1>
-            </Route>
-            <Route path="/playlists/:id">
-              <h1>Playlist</h1>
-            </Route>
-            <Route path="/playlists">
-              <h1>Playlists</h1>
-            </Route>
-              <Route path="/">
-                <Profile />
-            </Route>
-        </Routes> */}
-          
          </>
       )}
     </>
