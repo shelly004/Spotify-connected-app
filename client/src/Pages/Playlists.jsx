@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { SectionWrapper, PlaylistsGrid } from "../components";
+import { SectionWrapper, PlaylistsGrid, Loader } from "../components";
 import { getCurrentUserPlaylists } from "../spotify";
 import { catchErrors } from "../utils";
+import axios from "axios";
 
 function Playlists() {
   const [playlists, setPlaylists] = useState(null);
@@ -14,6 +15,7 @@ function Playlists() {
     };
     catchErrors(fetchData());
   }, []);
+
   //console.log("Playlists Data", playlistsData);
 
   useEffect(() => {
@@ -26,10 +28,8 @@ function Playlists() {
         setPlaylistsData(data);
       }
     };
-
     //update the state variable playlists with the playlistsData;
     setPlaylists((playlists) => (playlists || []).concat(playlistsData.items));
-
     catchErrors(fetchMoreData());
   }, [playlistsData]);
   //console.log("Playlists=>", playlists);
@@ -37,7 +37,7 @@ function Playlists() {
   return (
     <main>
       <SectionWrapper title="Public Playlists" breadcrumb={true}>
-        {playlists && <PlaylistsGrid playlists={playlists} />}
+        {playlists ? <PlaylistsGrid playlists={playlists} /> : <Loader />}
       </SectionWrapper>
     </main>
   );

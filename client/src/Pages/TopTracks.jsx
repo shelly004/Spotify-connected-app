@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { catchErrors } from "../utils";
-import { SectionWrapper, TimeRangeButtons, TrackList } from "../components";
+import {
+  SectionWrapper,
+  TimeRangeButtons,
+  TrackList,
+  Loader,
+} from "../components";
 import { getTopTracks } from "../spotify";
 function TopTracks() {
   const [topTracks, setTopTracks] = useState(null);
@@ -15,7 +20,7 @@ function TopTracks() {
   }, [activeRange]);
   return (
     <>
-      {topTracks && (
+      {topTracks ? (
         <main>
           <SectionWrapper title="Top Tracks" breadcrumb={true}>
             <TimeRangeButtons
@@ -27,6 +32,8 @@ function TopTracks() {
             )}
           </SectionWrapper>
         </main>
+      ) : (
+        <Loader />
       )}
     </>
   );

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Profile, TopArtists, TopTracks } from "./index";
+import { Playlists, Profile, TopArtists, TopTracks, Playlist } from "./index";
 
 const router = createBrowserRouter([
   {
@@ -16,11 +16,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/playlists/:id",
-    element: <Profile />,
+    element: <Playlist />,
   },
   {
     path: "/playlists",
-    element: <Profile />,
+    element: <Playlists />,
   },
 ]);
 

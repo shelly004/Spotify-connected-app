@@ -23,8 +23,6 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     min-height: 100%;
     overflow-x: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
     background-color: var(--black);
     color: var(--white);
     font-family: var(--font);
@@ -95,19 +93,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-  }
-
-  .overflow-ellipsis {
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: unset;
-    word-break: break-all;
   }
 
   .empty-notice {

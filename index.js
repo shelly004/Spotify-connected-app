@@ -8,10 +8,10 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
-app.get('/', (req, res) => {
-    res.send("Hello Ji");
+// app.get('/', (req, res) => {
+//     res.send("Hello Ji");
 
-})
+// })
 
 const generateRandomString = length => {
   let text = '';
@@ -25,14 +25,15 @@ const generateRandomString = length => {
 
 const stateKey = 'spotify_auth_state';
 
+//just to get the code and initiate the authorisation request
 app.get('/login', (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
 
   const scope = [
-    'user-read-private',
-    'user-read-email',
-    'user-top-read',
+    'user-read-private', //read and access user profile info
+    'user-read-email',  //get real email address
+    'user-top-read',    //top artist and content
   ].join(' ');
 
   const queryParams = querystring.stringify({
@@ -94,7 +95,7 @@ app.get('/refresh_token', (req, res) => {
       refresh_token: refresh_token
     }),
     headers: {
-      'content-type': 'application/x-www-form-urlencoded',
+      'content-type': 'application/x-www-form-urlencoded', //refers to the data sending in key value pairs
       Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
     },
   })
