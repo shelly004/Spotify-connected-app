@@ -50,7 +50,7 @@ const refreshToken = async () => {
     }
 
     //  `/refresh_token` endpoint
-    const { data } = await axios.get(`/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`);
+    const { data } = await axios.get(`http://localhost:8888/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`);
 
     // Update localStorage values
     console.log("Access token Data=>",data);
@@ -60,8 +60,8 @@ const refreshToken = async () => {
 
     // Reload the page for localStorage updates to be reflected
     //alert('something is going on inside refresh token');
-    //window.location.reload();
-    //console.log("after reload");
+    window.location.reload();
+    console.log("after reload");
 
   } catch (e) {
     console.error(e);
@@ -84,6 +84,7 @@ const getAccessToken = () => {
 
   //if error or token is expired then refresh the token
   if (hasError || hasTokenExpired() || LOCALSTORAGE_VALUES.accessToken === 'undefined') {
+    console.log("Token expired")
     refreshToken();
   }
   
